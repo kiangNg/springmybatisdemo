@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jbit.mapper.UserMapper">
+    <select id="findAll" resultType="com.jbit.entity.User">
+		select * from user u  limit #{param1},#{param2}
+	</select>
+
+    <select id="count" resultType="int">
+		select count(id) from user;
+	</select>
+
+    <select id="findById" parameterType="long" resultType="com.jbit.entity.User">
+		select * from user where id = #{id}
+	</select>
+
+    <delete id="deleteById" parameterType="long">
+		delete from user where id = #{id}
+	</delete>
+
+	<insert id="save" parameterType="com.jbit.entity.User">
+		insert into t_menu(username,password,nickname,gender,telephone,registerdate,address) values(#{username},#{password},#{nickname},#{gender},#{telephone},#{registerdate},#{address})
+	</insert>
+	<update id="update" parameterType="com.jbit.entity.User">
+		update user set username = #{username},password = #{password},nickname = #{nickname},gender = #{gender},telephone = #{telephone},registerdate = #{registerdate},address = #{address} where id = #{id}
+	</update>
+</mapper>
